@@ -4,6 +4,7 @@ class Quiz{
         _this.isTestEnd = false;
         _this.isTimeElapse = false;
         _this.result = [];
+        _this.currentQuote = 0;
         _this.selectElement();
         _this.questions = [
             {
@@ -45,15 +46,28 @@ class Quiz{
         ]
     }
     selectElements(){
+        const quoteContainer = document.querySelector('div.option-con');
+        const submitBtn = document.querySelector('button.btn-prev');
+        const nextBtn = document.querySelector('button.btn-next');
+        const prevBtn = document.querySelector('button.btn-prev');
+        const cancelBtn = document.querySelector('button.btn-cancel');
+        const optionRadio = document.querySelectorAll('input[type=radio]')
+        const quizQuest = document.querySelector('h2.quiz-quest');
+
+    }
+    loadPrev(){
+        let questLength = _this.questions.length;
+        console.log(questLength);
         
+
     }
-    init(){
-       
-    }
-    loadPrev(){}
     loadNext(){}
     checkTimeout(){}
     calculateResult(){}
-    displayResult(){}
+    displayResult(){}   
 
 }
+
+window.addEventListener('load', () =>{
+    let quiz = new Quiz();
+});
