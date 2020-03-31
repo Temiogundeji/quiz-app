@@ -1,46 +1,45 @@
+let _this = this;
+
+window.addEventListener('load', function(e){
+    e.preventDefault();
+    const quiz = new Quiz();
+});
 class Quiz{
-    constructor(){
+    constructor(){   
         _this = this;
         _this.isTestEnd = false;
         _this.isTimeElapse = false;
         _this.result = [];
         _this.currentQuote = 0;
-        _this.selectElement();
+        _this.selectElements();
+        _this.loadQuiz();
+        _this.init();
+    }
+
+    init(){
         _this.questions = [
             {
                 id:1,
                 question:"What is machine learning",
-                optionA:"Mathematics of statistics",
-                optionB: "Employing mathematical models to solving life problems",
-                optionC:"Solviing problems by programming mathematical models",
-                optionD: "None of the above",
+                options:["Mathematics of statistics","Employing mathematical models to solving life problems","Solviing problems by programming mathematical models","None of the above"],
                 correctOption:"C"
             },
             {
                 id:2,
                 question:"What is machine learning",
-                optionA:"Mathematics of statistics",
-                optionB: "Employing mathematical models to solving life problems",
-                optionC:"Solviing problems by programming mathematical models",
-                optionD: "None of the above",
-                correctOption:"C"
+                options:["Mathematics of statistics","Employing mathematical models to solving life problems","Solviing problems by programming mathematical models","None of the above"],
+                correctOption:"D"
             },
             {
                 id:3,
                 question:"What is machine learning",
-                optionA:"Mathematics of statistics",
-                optionB: "Employing mathematical models to solving life problems",
-                optionC:"Solviing problems by programming mathematical models",
-                optionD: "None of the above",
-                correctOption:"C"
+                options:["Mathematics of statistics","Employing mathematical models to solving life problems","Solviing problems by programming mathematical models","None of the above"],
+                correctOption:"B"
             },
             {
                 id:4,
                 question:"What is machine learning",
-                optionA:"Mathematics of statistics",
-                optionB: "Employing mathematical models to solving life problems",
-                optionC:"Solviing problems by programming mathematical models",
-                optionD: "None of the above",
+                options:["Mathematics of statistics","Employing mathematical models to solving life problems","Solviing problems by programming mathematical models","None of the above"],
                 correctOption:"C"
             }
         ]
@@ -55,19 +54,10 @@ class Quiz{
         const quizQuest = document.querySelector('h2.quiz-quest');
 
     }
-    loadPrev(){
-        let questLength = _this.questions.length;
-        console.log(questLength);
-        
-
-    }
+    loadQuiz(){}
+    loadPrev(){}
     loadNext(){}
     checkTimeout(){}
     calculateResult(){}
     displayResult(){}   
-
 }
-
-window.addEventListener('load', () =>{
-    let quiz = new Quiz();
-});
