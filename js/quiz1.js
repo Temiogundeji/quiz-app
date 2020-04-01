@@ -1,7 +1,8 @@
-const quoteContainer = document.querySelector('div.option-con');
+const questContainer = document.querySelector('div.option-con');
 const submitBtn = document.querySelector('button.btn-prev');
 const nextBtn = document.querySelector('button.btn-next');
 const prevBtn = document.querySelector('button.btn-prev');
+let questionTemplate = '';
 
 let isTestEnd = false;
 let isTimeElapse = false;
@@ -11,26 +12,46 @@ const questions = [
     {
         id:1,
         question:"What is machine learning",
-        options:["Mathematics of statistics","Employing mathematical models to solving life problems","Solviing problems by programming mathematical models","None of the above"],
-        correctOption:"C"
-    },
-    {
-        id:2,
-        question:"What is machine learning",
-        options:["Mathematics of statistics","Employing mathematical models to solving life problems","Solviing problems by programming mathematical models","None of the above"],
+        options:[
+            "Mathematics of statistics",
+            "Employing mathematical models to solving life problems",
+            "Solviing problems by programming mathematical models",
+            "None of the above"
+        ],
         correctOption:"D"
     },
     {
+        id:2,
+        question:"What is Kubernetes",
+        options:[
+            "Mathematics of statistics",
+            "Employing mathematical models to solving life problems",
+            "Solviing problems by programming mathematical models",
+            "None of the above"
+        ],
+        correctOption:"C"
+    },
+    {
         id:3,
-        question:"What is machine learning",
-        options:["Mathematics of statistics","Employing mathematical models to solving life problems","Solviing problems by programming mathematical models","None of the above"],
-        correctOption:"B"
+        question:"What is Docker",
+        options:[
+            "Mathematics of statistics",
+            "Employing mathematical models to solving life problems",
+            "Solviing problems by programming mathematical models",
+            "None of the above"
+        ],
+        correctOption:"A"
     },
     {
         id:4,
-        question:"What is machine learning",
-        options:["Mathematics of statistics","Employing mathematical models to solving life problems","Solviing problems by programming mathematical models","None of the above"],
-        correctOption:"C"
+        question:"What is API",
+        options:[
+            "Mathematics of statistics",
+            "Employing mathematical models to solving life problems",
+            "Solviing problems by programming mathematical models",
+            "None of the above"
+        ],
+        correctOption:"B"
     }
 ];
 
@@ -39,21 +60,22 @@ window.addEventListener('load', function(e){
     startQuiz();
 });
 function loadQuiz(){
-    for(let question of questions){
-        const quest = document.createElement('h2');
-        const radios = document.createElement('input');
-        radios.type = 'radio';
-        radios.name = 'option';
-        for(let option in question.options){
-            radios.textContent = option;
-        }    
-        quest.textContent = question.question;
-        console.log(radios);
-    }
+    const questHeading = document.createElement('h2');
+    const optionsList = document.createElement('ul');
+    const optionItem = document.createElement('li');
+    questions.forEach((question, i) =>{
+        console.log(question.question);
+        questHeading.textContent = question.question;
+        optionsList.type = "square";
+        for(let i=0; i < question.options.length; i++){
+            optionItem.textContent = question.options[i];
+            // optionsList.appendChild(optionItem);
+            console.log(question.options[i]);
+        }
+    });
 }
 function startQuiz(){
     loadQuiz();
-    console.log(questions)
 }
 function loadPrev(){}
 function loadNext(){}
