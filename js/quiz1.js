@@ -1,8 +1,8 @@
-const questContainer = document.querySelector('div.option-con');
+const quizContainer = document.querySelector('div#quiz-con');
 const submitBtn = document.querySelector('button.btn-prev');
 const nextBtn = document.querySelector('button.btn-next');
 const prevBtn = document.querySelector('button.btn-prev');
-let questionTemplate = '';
+let questTemplate = '';
 
 let isTestEnd = false;
 let isTimeElapse = false;
@@ -12,45 +12,37 @@ const questions = [
     {
         id:1,
         question:"What is machine learning",
-        options:[
-            "Mathematics of statistics",
-            "Employing mathematical models to solving life problems",
-            "Solviing problems by programming mathematical models",
-            "None of the above"
-        ],
+        optionA: "Mathematics of statistics",
+        optionB:"Employing mathematical models to solving life problems",
+        optionC :"Solviing problems by programming mathematical models",
+        optionD: "None of the above",
         correctOption:"D"
     },
     {
         id:2,
         question:"What is Kubernetes",
-        options:[
-            "Mathematics of statistics",
-            "Employing mathematical models to solving life problems",
-            "Solviing problems by programming mathematical models",
-            "None of the above"
-        ],
+        optionA: "Mathematics of statistics",
+        optionB:"Employing mathematical models to solving life problems",
+        optionC :"Solviing problems by programming mathematical models",
+        optionD: "None of the above",
         correctOption:"C"
     },
     {
         id:3,
         question:"What is Docker",
-        options:[
-            "Mathematics of statistics",
-            "Employing mathematical models to solving life problems",
-            "Solviing problems by programming mathematical models",
-            "None of the above"
-        ],
+        optionA: "Mathematics of statistics",
+        optionB:"Employing mathematical models to solving life problems",
+        optionC :"Solviing problems by programming mathematical models",
+        optionD: "None of the above",
         correctOption:"A"
     },
     {
         id:4,
         question:"What is API",
-        options:[
-            "Mathematics of statistics",
-            "Employing mathematical models to solving life problems",
-            "Solviing problems by programming mathematical models",
-            "None of the above"
-        ],
+        optionA: "Mathematics of statistics",
+        optionB:"Employing mathematical models to solving life problems",
+        optionC :"Solviing problems by programming mathematical models",
+        optionD: "None of the above",
         correctOption:"B"
     }
 ];
@@ -60,18 +52,35 @@ window.addEventListener('load', function(e){
     startQuiz();
 });
 function loadQuiz(){
-    const questHeading = document.createElement('h2');
-    const optionsList = document.createElement('ul');
-    const optionItem = document.createElement('li');
-    questions.forEach((question, i) =>{
-        console.log(question.question);
-        questHeading.textContent = question.question;
-        optionsList.type = "square";
-        for(let i=0; i < question.options.length; i++){
-            optionItem.textContent = question.options[i];
-            // optionsList.appendChild(optionItem);
-            console.log(question.options[i]);
-        }
+    questions.forEach((quest) =>{
+        let {id,question,optionA, optionB, optionC, optionD, correctOption} = quest;
+        questTemplate += `
+            <div>
+                <span>${id}</div>
+                <h2 class="quiz-quest">${question}</h2>
+                <div class="quiz-option-row">
+                    <label>
+                        A. ${optionA}
+                        <input type="radio" name="option" value="${optionA}">
+                    </label>
+                    <label>
+                        B. ${optionB}
+                        <input type="radio" name="option" value="${optionB}">
+                    </label>
+                </div>
+                <div class="quiz-option-row">
+                    <label>
+                        C. ${optionC}
+                        <input type="radio" name="option" value="${optionC}">
+                    </label>
+                    <label>
+                        D. ${optionD}
+                        <input type="radio" name="option" value="${optionD}">
+                    </label>
+                </div>
+            </div>
+        `;
+        quizContainer.innerHTML = questTemplate;
     });
 }
 function startQuiz(){
